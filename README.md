@@ -1,4 +1,4 @@
-# Estimating ODE models from time-series data
+# Building ODE models from time-series data
 
 This toolbox is part of the COSY-Bio project: http://www.cosy-bio.eu/
 
