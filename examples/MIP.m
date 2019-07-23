@@ -1,23 +1,15 @@
 %% ZAT ICL July 2019 
 
-read_config.states = 3;
-read_config.inputs = 2;
-read_config.noise  = 4;
-
 dir_name ='data';
 file_name = 'sbl_input_file_Exp1.csv';
 
 
 
-input_data = datareader_for_SBL(dir_name,file_name,read_config);
+input_data = datareader_for_SBL(dir_name,file_name);
 
 %%
 state_num = size(input_data.states,2);
 
-% measurement data
-
-% add measurement noise
-input_data.states = input_data.states + input_data.noise;
 
 % differeniate the signal
 for k = 1:state_num
