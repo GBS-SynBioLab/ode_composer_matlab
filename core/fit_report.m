@@ -36,6 +36,8 @@ else
     selected_states = 1:state_num;
 end
 
+state_num = 1;
+selected_states = 1:state_num;
 sbl_param = cell(1,state_num);
 for k = 1:state_num
     state = selected_states(k);
@@ -47,7 +49,7 @@ for k = 1:state_num
         plot(y(:,k),'LineWidth',2)
         hold on
         plot(A*fit_res.sbl_param{k},'LineWidth',2)
-        legend(sprintf('%s_{orig}',fit_res.state_name{state}),sprintf('%s_{sbl} fit',fit_res.state_name{state}),'Location','Best')
+        legend(sprintf('%s_{orig}',fit_res.name),sprintf('%s_{sbl} fit',fit_res.name),'Location','Best')
         xlabel('Sample Num')
         non_zero = size(fit_res.non_zero_dict{k},2);
         title(sprintf('State: %d Dict Num: %d, selected: %d (%g%%)',state,size(A,2),non_zero,non_zero/size(A,2)*100))

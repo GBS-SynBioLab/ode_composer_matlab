@@ -38,6 +38,9 @@ else
     selected_states = 1:state_num;
 end
 
+state_num = 1;
+selected_states = 1:state_num;
+
 % TODO consider preselected dictionary functions
 % if isfield(fit_res,'selected_dict')
 %     selected_dict = fit_res.selected_dict;

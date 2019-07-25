@@ -1,4 +1,4 @@
-function fit_res = vec_sbl(sbl_params,config)
+function fit_res = vec_sbl(sbl_params,config,model)
 % vec_sbl - solves the parameter estimation with SBL
 %
 % fit_res = vec_sbl(sbl_params,config) gets a model in sbl_params struct and the
@@ -11,7 +11,7 @@ if strcmpi(config.mode,'SMV')
     
     Dictionary = [];
     y = [];
-    for exp_idx = 1:sbl_params.experiment_num
+    for exp_idx = 1:model.experiment_num
         % adjust size if needed
         if size(sbl_params.A{exp_idx},1) > size(sbl_params.y{exp_idx},1)
             size_diff = size(sbl_params.A{exp_idx},1)-size(sbl_params.y{exp_idx},1);
@@ -117,7 +117,6 @@ for k=1:state_num
     gamma{k} = Gamma(:,end,k);
 end
 
-fit_res.name = sbl_params.name;
 fit_res.A = sbl_params.A;
 if isfield(config,'selected_dictionaries')
     fit_res.selected_dict = config.selected_dict;
@@ -128,7 +127,10 @@ end
 fit_res.y = sbl_params.y;
 fit_res.w_est = w_est;
 fit_res.gamma = gamma;
-fit_res.state_name = sbl_params.state_names;
-fit_res.experiment_num = sbl_params.experiment_num;
+fit_res.name = sbl_params.name;
+fit_res.experiment_num = model.experiment_num;
+fit_res.zero_dict = [];
+fit_res.non_zero_dict = [];
+fit_res.sbl_param = [];
 
 disp('end')
